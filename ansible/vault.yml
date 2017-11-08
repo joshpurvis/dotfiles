@@ -1,0 +1,43 @@
+---
+- name: vault | check if installed
+  become: no
+  shell: vault version
+  failed_when: false
+  register: vault_current_version
+  tags:
+    - vault
+
+- name: vault | vault is current?
+  become: no
+  set_fact:
+    vault_is_current: "{{ vault_current_version.rc == 0 and vault_current_version.stdout == ('Vault v' + vault_version) }}"
+  tags:
+    - vault
+
+- name: vault | tmp directory
+  become: no
+  file:
+    path: /tmp/vault/
+    state: directory
+  when: not vault_is_current
+  tags:
+    - vault
+
+- name: vault | download
+  become: no
+  get_url:
+    url: https://releases.hashicorp.com/vault/{{ vault_version }}/vault_{{ vault_version }}_linux_amd64.zip
+    dest: /tmp/vault/vault.zip
+  when: not vault_is_current
+  tags:
+    - vault
+
+- name: vault | install
+  become: yes
+  unarchive:
+    src: /tmp/vault/vault.zip
+    dest: /usr/local/bin/
+    copy: no
+  when: not vault_is_current
+  tags:
+    - vault

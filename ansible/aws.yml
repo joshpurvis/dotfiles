@@ -1,0 +1,10 @@
+---
+- name: install pip packages
+  become: yes
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - awscli
+    - awslogs
+  tags:
+    - packages

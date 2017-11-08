@@ -1,0 +1,35 @@
+---
+- hosts: all
+
+  vars:
+    default_user: "josh"
+    home: "{{ lookup('env','HOME') }}"
+    apt_cache_ttl: 3600
+    dotfile: "{{ home }}/src/dotfiles"
+    docker_compose_version: 1.12.0
+    golang_version: go1.8
+    golang_path: "{{ home }}/go"
+    nvm_path: "{{ home }}/.nvm"
+    nvm_user: "{{ default_user }}"
+    nvm_version: v0.33.1
+    terraform_version: 0.9.2
+    debian_release: stretch
+    vagrant_version: 1.9.3
+    vault_version: 0.7.0
+
+  tasks:
+
+    - name: update apt cache
+      become: yes
+      apt:
+        update_cache: yes
+        cache_valid_time: "{{ apt_cache_ttl }}"
+
+    - include: base.yml
+    - include: docker.yml
+    - include: desktop.yml
+    - include: go.yml
+    - include: nvm.yml
+    - include: terraform.yml
+    - include: vault.yml
+    - include: gcloud.yml

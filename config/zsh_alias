@@ -1,0 +1,51 @@
+alias kb="setxkbmap us; xset -r 66"
+alias govim="vim -u ~/.vimrc.go"
+alias todo="vim ~/.todo"
+alias j=autojump
+
+# edit zsh config
+alias zshconfig="sudo vim ~/.zshrc"
+alias torbrowser="docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY paulczar/torbrowser"
+
+# fixes a corrupted mongo instance
+#alias fixmongo="sudo rm /media/seagate_internal/mongo/mongod.lock && sudo -u mongodb mongod -f /etc/mongodb.conf --repair && sudo service mongodb start"
+
+# shows ip address
+alias showip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# show processes which use the most memory
+alias mem='while read command percent rss; do if [[ "${command}" != "COMMAND"  ]]; then rss="$(bc <<< "scale=2;${rss}/1024")"; fi; printf "%-26s%-8s%s\n" "${command}" "${percent}" "${rss}"; done < <(ps -A --sort -rss -o comm,pmem,rss | head -n 11)'
+
+# opens a random file to look busy
+alias busy='rnd_file=$(find /usr/include -type f -size +5k | sort -R | head -n 1) && vim +$((RANDOM%$(wc -l $rnd_file | cut -f1 -d" "))) $rnd_file'
+
+# matrix scrolling
+alias matrix='echo -e "\e[32m"; while :; do for i in {1..512}; do r="$(($RANDOM % 2))"; if [[ $(($RANDOM % 3)) == 1  ]]; then if [[ $(($RANDOM % 3)) == 1  ]]; then v+="\e[1m $r "; else v+="\e[2m $r "; fi; else v+=" "; fi; done; echo -e "$v"; v=""; done'
+
+# show mysql grants
+mygrants()
+{
+		mysql -B -N $@ -e "SELECT DISTINCT CONCAT(
+  'SHOW GRANTS FOR \'', user, '\'@\'', host, '\';'
+                
+				) AS query FROM mysql.user" | \ 
+  mysql $@ | \ 
+  sed 's/\(GRANT .*\)/\1;/;s/^\(Grants for .*\)/## \1 ##/;/##/{x;p;x;}'
+
+}
+
+function curltar() {
+    curl $@ | tar xz
+}
+
+# mb info
+alias mbinfo="sudo dmidecode | grep -i 'Base Board Information' -A4 -B1"
+
+bootstrap-digitalocean() { 
+    ssh root@$* adduser josh && sudo usermod -a -G sudo josh
+    scp /home/josh/src/.dotfiles/bin/bootstrap-server.sh josh@$*:bootstrap-server.sh
+    ssh-copy-id -i ~/.ssh/josh_rsa josh@moon     
+}
+
+
+alias k="~/kubernetes/cluster/kubectl.sh"

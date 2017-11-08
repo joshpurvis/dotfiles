@@ -1,0 +1,116 @@
+" .vimrc
+set nocompatible
+filetype off
+set mouse=a
+
+" Vundle bundles
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'jiangmiao/auto-pairs'
+    Plugin 'edkolev/tmuxline.vim'
+    Plugin 'hashivim/vim-hashicorp-tools'
+    Plugin 'w0rp/ale'
+
+    "Bundle 'Lokaltog/vim-easymotion'
+    "Plugin 'vim-airline/vim-airline'
+    "Plugin 'morhetz/gruvbox'
+    "Bundle 'git://git.wincent.com/command-t.git'
+    "Bundle 'nvie/vim-flake8'
+    "Bundle 'ervandew/supertab'
+    "Bundle 'terryma/vim-multiple-cursors'
+    "Bundle 'klen/python-mode'
+    "Bundle 'scrooloose/nerdtree'
+    "Plugin 'fatih/vim-go'
+call vundle#end()
+
+let mapleader = ","
+syntax on
+
+set hidden               "hide buffers instead of closing
+set tabstop=4            "set default tabbing to 4 spaces
+set autoindent
+set expandtab
+set shiftwidth=4         "spaces to use for autoindenting
+set shiftround           "multiple shiftwidth with carrots
+set smarttab
+set nonumber 
+set wildmenu
+set showcmd
+set hlsearch
+set ruler
+set laststatus=2
+set noshowmode
+set showmatch            "show matching brackets"
+set pastetoggle=<F2>
+
+"filetype plugin indent on
+
+" clear highlights on \ 
+noremap \ :noh<return><esc>
+
+" write to sudo when you forget
+cmap w!! w !sudo tee % >/dev/null
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <leader>v :tabedit $MYVIMRC<CR>
+
+" ctrl+shift+v auto switches pastemode
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+
+" make Y yank til the eol similar to C/D
+map Y y$
+
+" Map <C-L> to also toggle search highlighting until the next search
+nnoremap <C-L> :nohl<CR><C-L>
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+
+"Set vim to use 256 colorscheme in term
+set t_Co=256
+"colorscheme twilight256
+set background=dark  
+colorscheme gruvbox
+hi Normal ctermbg=NONE " transparency with uxrvt + vim
+"Invisible character colors
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
+" hack for when vim is in tmux and 256 color
+if &term =~ '256color'
+	set t_ut=
+endif
+
+"vim-airline
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+let g:airline#extensions#ale#enabled = 1

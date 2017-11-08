@@ -1,0 +1,42 @@
+---
+- name: desktop | apt packages
+  become: yes
+  apt:
+    state: present
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - gnome-tweak-tool
+    #- unity-tweak-tool
+    - xdotool
+    - i3
+    - i3lock
+    - gnome-terminal
+    - gnome
+    - nitrogen
+    - gnome-applets
+    - rxvt-unicode-256color
+    - lxappearance
+    - xautolock
+    - gsimplecal
+    - pavucontrol
+    - pulseaudio
+  tags:
+    - desktop
+
+#- name: gtk settings
+#  become: no
+#  shell: "{{ item }}"
+#  with_items:
+#    - "gsettings set com.canonical.desktop.interface scrollbar-mode normal"
+#  tags:
+#    - desktop
+
+- name: Set shell to zsh
+  become: yes
+  user:
+    name: "{{ default_user }}"
+    shell: /usr/bin/zsh
+  tags:
+    - desktop
+    - zsh

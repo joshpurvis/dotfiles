@@ -1,0 +1,80 @@
+# $HOME/.zshrc
+
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
+# if the init scipt doesn't exist
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+
+    # plugins
+    #zgen prezto git
+    #zgen prezto python
+    #zgen prezto docker
+    #zgen prezto ssh
+    #zgen prezto history-substring-search
+
+    zgen oh-my-zsh plugins/ssh-agent
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/python 
+    zgen oh-my-zsh plugins/npm
+    zgen oh-my-zsh plugins/docker
+
+    zgen load tonyseek/oh-my-zsh-virtualenv-prompt
+    zgen load ~/.zsh/themes/purvis
+
+    #zgen load zsh-users/zsh-syntax-highlighting
+    #zgen load zsh-users/zsh-completions src
+
+    # save all to init script
+    zgen save
+fi
+
+
+PATH=$PATH:$GOPATH/bin
+PATH=$PATH:/home/josh/bin
+
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
+DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
+HISTSIZE=9999
+SAVEHIST=$HISTSIZE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS 
+
+# fix jvm/pycharm unicode bug which prevents keyboard input
+export IBUS_ENABLE_SYNC_MODE=1
+
+# share zsh history across shells
+#setopt inc_append_history
+#setopt share_history
+
+# git log formatting
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# add alias file if it exists
+if [ -e ~/.zsh_alias ]; then
+    source ~/.zsh_alias
+fi
+
+# Virtualenv Settings
+export WORKON_HOME=$HOME/.env
+export PROJECT_HOME=$HOME/src
+#source /usr/local/bin/virtualenvwrapper.sh
+
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/josh/go/bin
+export PATH=$PATH:/home/josh/.cargo/bin
+export GOPATH=$HOME/go
+
+#if [ -z "$SSH_AUTH_SOCK"  ] ; then
+#   eval "$(ssh-agent -s)"
+#   ssh-add ~/.ssh/josh_rsa
+#fi
+
+
+export PATH=$HOME/bin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
