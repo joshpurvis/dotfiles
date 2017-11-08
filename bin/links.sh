@@ -11,3 +11,4 @@ ln -s ~/src/dotfiles/config/colors ~/.colors
 ln -s ~/src/dotfiles/config/zsh_alias ~/.zsh_alias
 ln -s ~/src/dotfiles/config/zshrc ~/.zshrc
 ln -s ~/src/dotfiles/config/zsh ~/.zsh
+ln -s ~/src/dotfiles/config/urxvt ~/.urxvt
