@@ -24,9 +24,9 @@
     - software-properties-common
     - ca-certificates
     - apparmor
-    #- linux-image-extra-{{ ansible_kernel }}
     - default-jdk
     - pandoc
+    - tidy
     - tmux
     - nmap
     - openssh-server
@@ -43,13 +43,18 @@
     - packages
     - docker
 
+- name: base | download vagrant
+  become: yes
+  shell: curl -o /tmp/vagrant.deb https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb
+  tags: base
+
 - name: base | install deb packages
   become: yes
   apt:
     deb: "{{ item }}"
   with_items:
     - "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-    #- "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb"
+    - "/tmp/vagrant.deb" 
   tags:
     - base
 

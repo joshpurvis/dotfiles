@@ -24,10 +24,8 @@
     - terraform
 
 - name: terraform | download
-  become: no
-  get_url:
-    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
-    dest: /tmp/terraform/terraform.zip
+  become: yes 
+  shell: curl -o /tmp/terraform/terraform.zip https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
   when: not terraform_is_current
   tags:
     - terraform

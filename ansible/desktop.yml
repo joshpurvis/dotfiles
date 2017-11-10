@@ -11,6 +11,7 @@
     - xdotool
     - i3
     - i3lock
+    - suckless-tools # dmenu and i3status
     - gnome-terminal
     - gnome
     - nitrogen
