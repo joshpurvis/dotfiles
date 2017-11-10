@@ -2,6 +2,7 @@ alias kb="setxkbmap us; xset -r 66"
 alias govim="vim -u ~/.vimrc.go"
 alias todo="vim ~/.todo"
 alias j=autojump
+alias f=fg  #too lazy for two letters
 
 # edit zsh config
 alias zshconfig="sudo vim ~/.zshrc"
