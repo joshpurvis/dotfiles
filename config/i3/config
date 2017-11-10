@@ -210,3 +210,4 @@ client.urgent #cc241d #cc241d #ebdbb2 #282828
 # window options for opencv popups
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="show-opencv"] floating enable
+
