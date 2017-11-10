@@ -49,3 +49,4 @@
     la = !git l --all
     b = "!. ~/bin/git-helpers && pretty_git_branch"
     bs = "!. ~/bin/git-helpers && pretty_git_branch_sorted"
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
