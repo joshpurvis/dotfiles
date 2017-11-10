@@ -195,7 +195,7 @@ bar {
 } 
 
 #shortcuts
-bindsym Control+mod1+L exec ~/src/dotfiles/bin/lock.sh ~/src/dotfiles/images/icons/lock.png
+bindsym Control+mod1+L exec ~/src/dotfiles/bin/lock ~/src/dotfiles/images/icons/lock.png
 #bindsym Control+Space exec --no-startup-id synapse (starts on login now)
 bindsym $mod+c exec --no-startup-id gsimplecal
 # move workspace to the other monitor
