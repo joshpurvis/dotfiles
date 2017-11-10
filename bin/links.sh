@@ -12,3 +12,4 @@ ln -s ~/src/dotfiles/config/zsh_alias ~/.zsh_alias
 ln -s ~/src/dotfiles/config/zshrc ~/.zshrc
 ln -s ~/src/dotfiles/config/zsh ~/.zsh
 ln -s ~/src/dotfiles/config/urxvt ~/.urxvt
+ln -s ~/src/dotfiles/config/gitconfig ~/.gitconfig
