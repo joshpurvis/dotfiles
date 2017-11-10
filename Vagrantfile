@@ -25,6 +25,6 @@ Vagrant.configure(2) do |config|
     # install software via ansible bootstrap
     config.vm.provision "shell", inline: "cd ~/src/dotfiles && sudo ./bootstrap.sh"
 
-    config.vm.provision "shell", inline: "cd ~/src/dotfiles && sudo ./bin/links.sh"
+    config.vm.provision "shell", inline: "cd ~/src/dotfiles && sudo ./bin/links"
 
 end
