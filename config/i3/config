@@ -142,7 +142,7 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 # set default font
-font pango: Inconsulata 10
+font pango: Inconsulata 8 
 
 # disable title bars
 new_window 1pixel
