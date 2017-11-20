@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/josh/src/dotfiles/bin'
-let g:netrw_dirhist_2='/home/josh/src/dotfiles/ansible'
-let g:netrw_dirhist_3='/home/josh/src/dotfiles/config/i3/i3'
-let g:netrw_dirhist_4='/home/josh/src/dotfiles/config/i3/i3/i3'
-let g:netrw_dirhist_5='/home/josh/src/dotfiles/config/i3/i3/i3/i3'
