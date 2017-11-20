@@ -1,7 +1,6 @@
 " .vimrc
 set nocompatible
 filetype off
-set mouse=a
 
 " Vundle bundles
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -13,6 +12,9 @@ call vundle#begin()
     Plugin 'junegunn/fzf.vim'
     Plugin 'edkolev/tmuxline.vim'
     Plugin 'hashivim/vim-hashicorp-tools'
+    Plugin 'tpope/vim-sensible'
+    Plugin 'itchyny/lightline.vim'
+    Plugin 'airblade/vim-gitgutter'
     "Plugin 'w0rp/ale'
 
     "Bundle 'Lokaltog/vim-easymotion'
@@ -104,18 +106,6 @@ if &term =~ '256color'
 	set t_ut=
 endif
 
-"vim-airline
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-
-let g:airline#extensions#ale#enabled = 1
-
 " This is the default extra key bindings
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -165,3 +155,22 @@ let g:fzf_colors =
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" line numbers
+set rnu
+au BufEnter * :set rnu
+au BufLeave * :set nu
+au WinEnter * :set rnu
+au WinLeave * :set nu
+au InsertEnter * :set nu
+au InsertLeave * :set rnu
+au FocusLost * :set nu
+au FocusGained * :set rnu
+
+" Fix git gutter ugly gray bar
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow
+highlight GitGutterDelete ctermfg=red
+highlight GitGutterChangeDelete ctermfg=yellow
+
