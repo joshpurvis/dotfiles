@@ -1,11 +1,8 @@
-vim/bundle/vim-airline
-vim/bundle/vim-fugitive
-
 .gitbak
 init
 .idea
 .vagrant
-
+.netrwhist
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
