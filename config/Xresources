@@ -121,13 +121,13 @@
 *saveLines:             999999
 
 !-- Xft settings -- !
-Xft.dpi:        144
-Xft.rgba:       rgb
-Xft.autohint:   0
-Xft.lcdfilter:  lcddefault
-Xft.hintstyle:  hintfull
-Xft.hinting:    1
-Xft.antialias:  1
+!!Xft.dpi:        144
+!!Xft.rgba:       rgb
+!!Xft.autohint:   0
+!!Xft.lcdfilter:  lcddefault
+!!Xft.hintstyle:  hintfull
+!!Xft.hinting:    1
+!!Xft.antialias:  1
 
 ! -- Fonts -- !
 URxvt.font:xft:Inconsolata:pixelsize=13,style=Medium, xft:Symbola:pixelsize=19,style=Regular
