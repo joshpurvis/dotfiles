@@ -1,21 +1,28 @@
 " .vimrc
 set nocompatible
 filetype off
+set updatetime=250
 
 " Vundle bundles
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
+
+
 call vundle#begin()
 
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'sheerun/vim-polyglot'
     Plugin 'jiangmiao/auto-pairs'
-    Plugin 'junegunn/fzf.vim'
+    Plugin 'junegunn/fzf.vim' 
     Plugin 'edkolev/tmuxline.vim'
     Plugin 'hashivim/vim-hashicorp-tools'
     Plugin 'tpope/vim-sensible'
     Plugin 'itchyny/lightline.vim'
     Plugin 'airblade/vim-gitgutter'
-    "Plugin 'w0rp/ale'
+    Plugin 'w0rp/ale'
+    Plugin 'ervandew/supertab'
+    Plugin 'davidhalter/jedi-vim'
 
     "Bundle 'Lokaltog/vim-easymotion'
     "Plugin 'vim-airline/vim-airline'
@@ -48,6 +55,10 @@ set laststatus=2
 set noshowmode
 set showmatch            "show matching brackets"
 set pastetoggle=<F2>
+
+" space key toggles folding
+nnoremap <space> za
+vnoremap <space> zf
 
 "filetype plugin indent on
 
@@ -85,10 +96,10 @@ nnoremap <C-L> :nohl<CR><C-L>
 nmap <leader>l :set list!<CR>
 
 " Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <C-h> <C-W>h_
+map <C-j> <C-W>j_
+map <C-k> <C-W>k_
+map <C-l> <C-W>l_
 
 
 "Set vim to use 256 colorscheme in term
@@ -106,49 +117,12 @@ if &term =~ '256color'
 	set t_ut=
 endif
 
-" This is the default extra key bindings
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
   copen
   cc
 endfunction
-
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~40%' }
-
-" You can set up fzf window using a Vim command (Neovim or latest Vim 8 required)
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_layout = { 'window': '-tabnew' }
-let g:fzf_layout = { 'window': '10split enew' }
-
-" Customize fzf colors to match your color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
@@ -173,4 +147,20 @@ highlight GitGutterAdd ctermfg=green
 highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
 highlight GitGutterChangeDelete ctermfg=yellow
+
+" fzf settings
+nmap ; :Buffers<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>a :Ag<CR>
+nmap <C-t> :Files<CR>
+
+let g:ale_sign_column_always = 1
+"let g:gitgutter_realtime = 1
+"let g:gitgutter_eager = 1
+
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
