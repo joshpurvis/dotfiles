@@ -13,3 +13,4 @@ ln -s ~/src/dotfiles/config/zshrc ~/.zshrc
 ln -s ~/src/dotfiles/config/zsh ~/.zsh
 ln -s ~/src/dotfiles/config/urxvt ~/.urxvt
 ln -s ~/src/dotfiles/config/gitconfig ~/.gitconfig
+ln -s ~/src/dotfiles/bin/projectwatch ~/bin/projectwatch
