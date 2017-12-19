@@ -67,6 +67,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/josh/go/bin
 export PATH=$PATH:/home/josh/.cargo/bin
+export PATH=$PATH:/home/josh/.local/bin
 export GOPATH=$HOME/go
 
 #if [ -z "$SSH_AUTH_SOCK"  ] ; then
