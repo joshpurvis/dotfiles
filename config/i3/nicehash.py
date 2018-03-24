@@ -20,24 +20,42 @@ class NiceHash(IntervalModule):
     format = '{btc_per_day} Ƀ/day'
 
     def run(self):
-        response = requests.get(NICEHASH_API_URL.format(address=self.address))
 
-        data = response.json()
+        try:
+            response = requests.get(NICEHASH_API_URL.format(address=self.address), timeout=10)
 
-        current_algos = data['result']['current']
+            if response.text:
 
-        profit_per_day = Decimal(0)
-        for algo in current_algos:
+                data = response.json()
 
-            speed = algo['data'][0].get('a')
-            if speed:
-                profit_per_day += Decimal(float(speed)) * Decimal(float(algo['profitability']))
+                current_algos = data['result']['current']
 
-        self.logger.error(profit_per_day)
+                profit_per_day = Decimal(0)
+                for algo in current_algos:
 
-        self.data = {
-            'btc_per_day': format(profit_per_day, '.4f'),
-        }
+                    speed = algo['data'][0].get('a')
+                    if speed:
+                        profit_per_day += Decimal(float(speed)) * Decimal(float(algo['profitability']))
+
+                self.logger.error(profit_per_day)
+
+                self.data = {
+                    'btc_per_day': format(profit_per_day, '.4f'),
+                }
+
+            else:
+
+                self.data = {
+                    'btc_per_day': 'NA',
+                }            
+
+        except Exception as e:
+            self.logger.critical(e)
+
+            self.data = {
+                'btc_per_day': 'NA',
+            }
+
 
         self.output = {
             'full_text': self.format.format(**self.data)

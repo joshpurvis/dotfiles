@@ -1,0 +1,24 @@
+#!/bin/python
+import re
+import subprocess
+
+
+DEVICES_REGEX = re.compile("Bus\s+(?P<bus>\d+)\s+Device\s+(?P<device>\d+).+ID\s(?P<id>\w+:\w+)\s(?P<tag>.+)$", re.I)
+
+def devices():
+    df = subprocess.check_output("lsusb")
+    devices = []
+
+    for i in df.split('\n'):
+        if i:
+            info = DEVICES_REGEX.match(i)
+            if info:
+                dinfo = info.groupdict()
+                dinfo['device'] = '/dev/bus/usb/%s/%s' % (dinfo.pop('bus'), dinfo.pop('device'))
+                devices.append(dinfo)
+    return devices
+
+
+if __name__ == "__main__":
+    d = devices()
+    print d

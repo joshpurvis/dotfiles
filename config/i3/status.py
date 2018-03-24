@@ -1,7 +1,7 @@
 from i3pystatus import Status
 from nicehash import NiceHash
 
-status = Status()
+status = Status() 
 
 
 status.register("clock", format="%Y-%m-%d %H:%M")
