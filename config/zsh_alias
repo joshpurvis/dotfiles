@@ -52,3 +52,6 @@ bootstrap-digitalocean() {
 alias k="~/kubernetes/cluster/kubectl.sh"
 
 alias v="vim"
+
+alias u="sudo pacman -Syu"
+

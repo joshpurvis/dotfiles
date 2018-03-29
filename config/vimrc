@@ -5,6 +5,7 @@ filetype off
 set updatetime=250
 setlocal spell spelllang=en_us
 
+
 " Vundle bundles
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.fzf
@@ -24,6 +25,8 @@ call vundle#begin()
     Plugin 'airblade/vim-gitgutter'
     Plugin 'w0rp/ale'
     Plugin 'davidhalter/jedi-vim'
+    Plugin 'flazz/vim-colorschemes'
+    Plugin 'arcticicestudio/nord-vim'
     "Plugin 'Valloric/YouCompleteMe'
 
     "Bundle 'Lokaltog/vim-easymotion'
@@ -107,13 +110,13 @@ map <C-l> <C-W>l_
 
 "Set vim to use 256 colorscheme in term
 set t_Co=256
-"colorscheme twilight256
-set background=dark  
-colorscheme gruvbox
-hi Normal ctermbg=NONE " transparency with uxrvt + vim
+"set background=dark  
+
+colorscheme nord 
+"hi Normal ctermbg=NONE " transparency with uxrvt + vim
 "Invisible character colors
-highlight NonText guifg=#4a4a59
-highlight SpecialKey guifg=#4a4a59
+"highlight NonText guifg=#4a4a59
+"highlight SpecialKey guifg=#4a4a59
 
 " hack for when vim is in tmux and 256 color
 if &term =~ '256color'
@@ -144,12 +147,7 @@ au InsertLeave * :set rnu
 au FocusLost * :set nu
 au FocusGained * :set rnu
 
-" Fix git gutter ugly gray bar
-highlight clear SignColumn
-highlight GitGutterAdd ctermfg=green
-highlight GitGutterChange ctermfg=yellow
-highlight GitGutterDelete ctermfg=red
-highlight GitGutterChangeDelete ctermfg=yellow
+
 
 " fzf settings
 nmap ; :Buffers<CR>
@@ -158,14 +156,14 @@ nmap <Leader>t :Files<CR>
 nmap <Leader>a :Ag<CR>
 nmap <C-t> :Files<CR>
 
-let g:ale_sign_column_always = 1
+"let g:ale_sign_column_always = 1
 "let g:gitgutter_realtime = 1
 "let g:gitgutter_eager = 1
 
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
+"highlight link ALEWarningSign String
+" highlight link ALEErrorSign Title
 
 
 " shift+arrow selection
@@ -185,8 +183,22 @@ imap <S-Right> <Esc>v<Right>
 " F6 toggles spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 
+" fix ugly spellcheck
+" highlight SpellBad cterm=underline ctermfg=255 ctermbg=166 guifg=#eeeeee guibg=#d75f00
+highlight SpellBad cterm=underline ctermfg=166 ctermbg=NONE guibg=NONE
+
 " let g:SuperTabClosePreviewOnPopupClose = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
+"hi Pmenu ctermbg=color ctermfg=color
+"hi PmenuSel ctermbg=color ctermfg=color
+"
+" Fix git gutter ugly gray bar
+highlight LineNr ctermbg=None
+highlight SignColumn ctermbg=NONE
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow
+highlight GitGutterDelete ctermfg=red
+highlight GitGutterChangeDelete ctermfg=yellow
 

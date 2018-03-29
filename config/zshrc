@@ -14,7 +14,7 @@ if ! zgen saved; then
     #zgen prezto python
     #zgen prezto docker
     #zgen prezto ssh
-    #zgen prezto history-substring-search
+ G   #zgen prezto history-substring-search
 
     zgen oh-my-zsh plugins/ssh-agent
     zgen oh-my-zsh plugins/git
@@ -62,7 +62,7 @@ fi
 # Virtualenv Settings
 export WORKON_HOME=$HOME/.env
 export PROJECT_HOME=$HOME/src
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/josh/go/bin
@@ -82,3 +82,5 @@ export PATH=$HOME/bin:$PATH
 
 # fix vim inside tmux
 alias tmux="TERM=screen-256color-bce tmux"
+
+export TERM=rxvt-unicode-256color

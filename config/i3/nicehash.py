@@ -37,7 +37,6 @@ class NiceHash(IntervalModule):
                     if speed:
                         profit_per_day += Decimal(float(speed)) * Decimal(float(algo['profitability']))
 
-                self.logger.error(profit_per_day)
 
                 self.data = {
                     'btc_per_day': format(profit_per_day, '.4f'),
@@ -47,7 +46,7 @@ class NiceHash(IntervalModule):
 
                 self.data = {
                     'btc_per_day': 'NA',
-                }            
+                }
 
         except Exception as e:
             self.logger.critical(e)
