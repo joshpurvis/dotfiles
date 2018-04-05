@@ -1,4 +1,6 @@
-ln -s ~/src/dotfiles/config/i3 ~/.i3
+mkdir -p ~/.config
+mkdir -p ~/bin
+ln -ns ~/src/dotfiles/config/i3 ~/.i3
 ln -s ~/src/dotfiles/config/themes ~/.themes
 ln -s ~/src/dotfiles/config/vim ~/.vim
 ln -s ~/src/dotfiles/config/compton.conf ~/.compton.conf
@@ -17,3 +19,5 @@ ln -s ~/src/dotfiles/config/urxvt ~/.urxvt
 ln -s ~/src/dotfiles/config/gitconfig ~/.gitconfig
 ln -s ~/src/dotfiles/bin/projectwatch ~/bin/projectwatch
 ln -s ~/src/dotfiles/fonts ~/.fonts
+ln -s ~/.Xresources ~/.Xdefaults
+ln -s ~/src/dotfiles/config/mopidy ~/.config/mopidy
