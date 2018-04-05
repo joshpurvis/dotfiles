@@ -6,6 +6,7 @@ init
 config/vim/bundle/*
 config/ranger/history
 config/i3/config
+config/vim/swap
 
 
 # Byte-compiled / optimized / DLL files
