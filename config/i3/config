@@ -2,6 +2,15 @@ set $mod Mod1
 set $rangerandterminal urxvt -e bash -i -c "ranger && zsh" 
 set $terminal urxvt 
 
+# set default font
+font pango: Inconsulata 8 
+
+# disable title bars
+new_window 1pixel 
+
+# dont follow mouse
+focus_follows_mouse no
+
 # title bar font
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
@@ -142,46 +151,10 @@ mode "resize" {
 }
 
 bindsym Mod1+r mode "resize"
-
-# set default font
-font pango: Inconsulata 8 
-
-# disable title bars
-new_window 1pixel 
-# network manager
-exec --no-startup-id nm-applet
-exec --no-startup-id gnome-sound-applet
-
-# nitrogen (background manager)
-exec --no-startup-id nitrogen --restore
-
-# start rescue time
-#exec --no-startup-id rescuetime
-exec --no-startup-id compton --unredir-if-possible
-
-# dont follow mouse
-focus_follows_mouse no
+bindsym $mod+x move workspace to output right
 
 
-bar {
-   output "LVDS1"
-   height 25
-   position top
-   tray_output "LVDS1" 
-   status_command ~/.env/i3/bin/python3 ~/.i3/status.py
-   colors {
-     separator #928374
-     background #282828
-     statusline #ebdbb2
-     focused_workspace #A3BE8C #A3BE8C #282828
-     active_workspace #1d2021 #1d2021 #928374
-     inactive_workspace #32302f #32302f #928374
-     urgent_workspace #cc241d #cc241d #ebdbb2
-   }
-   font pango: Inconsulata Bold 8
-}
-
-#kgaps
+#gaps
 gaps inner 0
 gaps outer 0 
 
@@ -222,13 +195,16 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-#shortcuts
+# shortcuts
 bindsym Control+space exec --no-startup-id "rofi -combi-modi window,drun,ssh -show combi -modi combi"
 bindsym Control+mod1+L exec ~/src/dotfiles/bin/lock ~/src/dotfiles/images/icons/lock.png
-
 bindsym $mod+c exec --no-startup-id gsimplecal
-# move workspace to the other monitor
-bindsym $mod+x move workspace to output right
+
+# startup
+exec --no-startup-id nm-applet
+exec --no-startup-id gnome-sound-applet
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id compton --unredir-if-possible
 
 # window color scheme #689d6a
 client.focused #A3BE8C #A3BE8C #282828 #A3BE8C
@@ -241,7 +217,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="show-opencv"] floating enable
 for_window [class="^URxvtFuzzy$"] floating enable
 
-
+# don't show green border on chromium
 for_window [title="Chromium$"] border none 
 for_window [title="Chromium$"] client.focused #000000 #000000 #000000 #000000 
 for_window [title="Chromium$"] client.focused_inactive #000000 #000000 #000000 #000000 
