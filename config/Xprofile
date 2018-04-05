@@ -12,13 +12,13 @@ numlockx &
 
 # start i3 and keep it running
 if [ -f /usr/bin/i3 ]; then
-    if [ "$HOST" == "main" ]; then
+    if [ "$(cat /etc/hostname)" == "main" ]; then
         cat ~/.i3/config.base ~/.i3/config.main > .i3/config
     fi
-    if [ "$HOST" == "josh-laptop" ]; then
+    if [ "$(cat /etc/hostname)" == "josh-laptop" ]; then
         cat ~/.i3/config.base ~/.i3/config.laptop > .i3/config
     fi
     xrdb ~/.Xresources
-    exec i3 
+#    exec i3 
 fi
 

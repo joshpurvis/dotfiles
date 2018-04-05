@@ -23,7 +23,7 @@ link ~/src/dotfiles/config/tmux.conf ~/.tmux.conf
 link ~/src/dotfiles/config/Xmodmap ~/.Xmodmap
 link ~/src/dotfiles/config/Xresources ~/.Xresources
 link ~/src/dotfiles/config/Xresources ~/.Xdefaults
-link ~/src/dotfiles/config/Xprofile ~/.Xprofile
+link ~/src/dotfiles/config/Xprofile ~/.xprofile
 link ~/src/dotfiles/config/colors ~/.colors
 link ~/src/dotfiles/config/zsh_alias ~/.zsh_alias
 link ~/src/dotfiles/config/zshrc ~/.zshrc
