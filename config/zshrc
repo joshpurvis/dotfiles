@@ -43,7 +43,6 @@ PATH=$PATH:/usr/lib/w3m
 
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
-#DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -53,8 +52,8 @@ setopt HIST_IGNORE_DUPS
 export IBUS_ENABLE_SYNC_MODE=1
 
 # share zsh history across shells
-#setopt inc_append_history
-#setopt share_history
+setopt inc_append_history
+setopt share_history
 
 # git log formatting
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
@@ -75,13 +74,7 @@ export PATH=$PATH:/home/josh/.cargo/bin
 export PATH=$PATH:/home/josh/.local/bin
 export GOPATH=$HOME/go
 
-#if [ -z "$SSH_AUTH_SOCK"  ] ; then
-#   eval "$(ssh-agent -s)"
-#   ssh-add ~/.ssh/josh_rsa
-#fi
-
-
-export PATH=$HOME/bin:$PATH
+export PATH=$PATH:$HOME/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
