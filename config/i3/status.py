@@ -6,19 +6,19 @@ import os
 status = Status()
 
 status.register("clock", format="%Y-%m-%d %H:%M")
-
-status.register(
-    "battery",
-    interval=30,
-    alert_percentage=15,
-    format = "{status}{remaining}",
-    status = {
-        'DPL': '',
-        'CHR': u"⚡ ",
-        'DIS': u"~",
-        'FULL': u"",
-    }
-)
+if os.environ.get('HOST') == 'josh-laptop':
+    status.register(
+        "battery",
+        interval=30,
+        alert_percentage=15,
+        format = "{status}{remaining}",
+        status = {
+            'DPL': '',
+            'CHR': u"⚡ ",
+            'DIS': u"~",
+            'FULL': u"",
+        }
+    )
 
 status.register("cpu_usage")
 
