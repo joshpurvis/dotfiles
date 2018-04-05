@@ -14,12 +14,6 @@ if ! zgen saved; then
     zgen oh-my-zsh
 
     # plugins
-    #zgen prezto git
-    #zgen prezto python
-    #zgen prezto docker
-    #zgen prezto ssh
-    #zgen prezto history-substring-search
-
     zgen oh-my-zsh plugins/ssh-agent
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/python 
