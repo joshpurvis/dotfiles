@@ -1,3 +1,4 @@
+alias y="yaourt"
 alias kb="setxkbmap us; xset -r 66"
 alias govim="vim -u ~/.vimrc.go"
 alias todo="vim ~/.todo"
@@ -6,10 +7,7 @@ alias f=fg  #too lazy for two letters
 
 # edit zsh config
 alias zshconfig="sudo vim ~/.zshrc"
-alias torbrowser="docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY paulczar/torbrowser"
-
-# fixes a corrupted mongo instance
-#alias fixmongo="sudo rm /media/seagate_internal/mongo/mongod.lock && sudo -u mongodb mongod -f /etc/mongodb.conf --repair && sudo service mongodb start"
+alias torbrowser="docker run --name torbrowser -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY paulczar/torbrowser && docker rm torbrowser"
 
 # shows ip address
 alias showip="dig +short myip.opendns.com @resolver1.opendns.com"

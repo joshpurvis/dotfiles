@@ -1,7 +1,11 @@
 # $HOME/.zshrc
+export EDITOR=vim
+export KEYTIMEOUT=1
 
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
+
+source ~/.secret
 
 # if the init scipt doesn't exist
 if ! zgen saved; then
@@ -14,7 +18,7 @@ if ! zgen saved; then
     #zgen prezto python
     #zgen prezto docker
     #zgen prezto ssh
- G   #zgen prezto history-substring-search
+    #zgen prezto history-substring-search
 
     zgen oh-my-zsh plugins/ssh-agent
     zgen oh-my-zsh plugins/git
@@ -35,10 +39,11 @@ fi
 
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:/home/josh/bin
+PATH=$PATH:/usr/lib/w3m
 
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
-DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
+#DEBIAN_PREVENT_KEYBOARD_CHANGES=yes
 HISTSIZE=9999
 SAVEHIST=$HISTSIZE
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -84,3 +89,9 @@ export PATH=$HOME/bin:$PATH
 alias tmux="TERM=screen-256color-bce tmux"
 
 export TERM=rxvt-unicode-256color
+
+# enable nvm
+source /usr/share/nvm/init-nvm.sh
+
+# prevent stupid single quotes everywhere with ls
+export QUOTING_STYLE=literal
