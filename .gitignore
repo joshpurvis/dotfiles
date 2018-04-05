@@ -5,6 +5,7 @@ init
 .netrwhist
 config/vim/bundle/*
 config/ranger/history
+config/i3/config
 
 
 # Byte-compiled / optimized / DLL files
