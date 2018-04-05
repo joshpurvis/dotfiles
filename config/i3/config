@@ -10,6 +10,7 @@ floating_modifier $mod
 # start a terminal
 bindsym Mod1+Return exec $rangerandterminal 
 bindsym Control+mod1+T exec $terminal
+bindsym mod1+t exec $terminal 
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -156,16 +157,18 @@ exec --no-startup-id nitrogen --restore
 
 # start rescue time
 #exec --no-startup-id rescuetime
-exec --no-startup-id compton
+exec --no-startup-id compton --unredir-if-possible
 
 # dont follow mouse
 focus_follows_mouse no
 
+
 bar {
-   output "DP-1"
+   output "LVDS1"
    height 25
    position top
-   tray_output "DP-1" 
+   tray_output "LVDS1" 
+   status_command ~/.env/i3/bin/python3 ~/.i3/status.py
    colors {
      separator #928374
      background #282828
@@ -177,26 +180,9 @@ bar {
    }
    font pango: Inconsulata Bold 8
 }
-bar {
-   output "DP-3"
-   status_command ~/.env/i3/bin/python3 ~/.i3/status.py
-   height 25
-   position top
-   tray_output "DP-1"
-   colors {
-     separator #928374
-     background #282828
-     statusline #ebdbb2
-     focused_workspace #A3BE8C #A3BE8C #282828
-     active_workspace #1d2021 #1d2021 #928374
-     inactive_workspace #32302f #32302f #928374
-     urgent_workspace #cc241d #cc241d #ebdbb2
-   }
-   font pango: Inconsulata Bold 8
-} 
 
-#gaps
-gaps inner 20
+#kgaps
+gaps inner 0
 gaps outer 0 
 
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -237,14 +223,15 @@ mode "$mode_gaps_outer" {
 }
 
 #shortcuts
+bindsym Control+space exec --no-startup-id "rofi -combi-modi window,drun,ssh -show combi -modi combi"
 bindsym Control+mod1+L exec ~/src/dotfiles/bin/lock ~/src/dotfiles/images/icons/lock.png
-#bindsym Control+Space exec --no-startup-id synapse (starts on login now)
+
 bindsym $mod+c exec --no-startup-id gsimplecal
 # move workspace to the other monitor
 bindsym $mod+x move workspace to output right
 
 # window color scheme #689d6a
-client.focused #A3BE8C #A3BE8C #282828 #282828
+client.focused #A3BE8C #A3BE8C #282828 #A3BE8C
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused #32302f #32302f #928374 #282828
 client.urgent #cc241d #cc241d #ebdbb2 #282828
