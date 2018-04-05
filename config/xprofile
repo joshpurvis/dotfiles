@@ -1,0 +1,19 @@
+
+. ~/.secret 
+
+xmodmap ~/.Xmodmap
+
+# enable window compositing
+if [ -f /usr/bin/compton ]; then
+    compton --config "$HOME/.compton.conf" --daemon
+fi
+
+numlockx &
+
+# start i3 and keep it running
+if [ -f /usr/bin/i3 ]; then
+    cat ~/.i3/config.base ~/.i3/config.main > .i3/config
+    xrdb ~/.Xresources
+    exec i3 
+fi
+

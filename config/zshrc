@@ -1,5 +1,4 @@
 # $HOME/.zshrc
-#setleds -D +num
 export EDITOR=vim
 export KEYTIMEOUT=1
 

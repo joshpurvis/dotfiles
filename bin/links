@@ -20,10 +20,10 @@ link ~/src/dotfiles/config/compton.conf ~/.compton.conf
 link ~/src/dotfiles/config/ranger ~/.config/ranger
 link ~/src/dotfiles/config/vimrc ~/.vimrc
 link ~/src/dotfiles/config/tmux.conf ~/.tmux.conf
-link ~/src/dotfiles/config/xinitrc ~/.xinitrc
 link ~/src/dotfiles/config/Xmodmap ~/.Xmodmap
 link ~/src/dotfiles/config/Xresources ~/.Xresources
-link ~/src/dotfiles/config/Xdefaults ~/.Xdefaults
+link ~/src/dotfiles/config/Xresources ~/.Xdefaults
+link ~/src/dotfiles/config/Xprofile ~/.Xprofile
 link ~/src/dotfiles/config/colors ~/.colors
 link ~/src/dotfiles/config/zsh_alias ~/.zsh_alias
 link ~/src/dotfiles/config/zshrc ~/.zshrc
@@ -31,6 +31,4 @@ link ~/src/dotfiles/config/zsh ~/.zsh
 link ~/src/dotfiles/config/urxvt ~/.urxvt
 link ~/src/dotfiles/config/gitconfig ~/.gitconfig
 link ~/src/dotfiles/fonts ~/.fonts
-link ~/.Xresources ~/.Xdefaults
 link ~/src/dotfiles/config/mopidy ~/.config/mopidy
-link ~/src/dotfiles/config/xsession ~/.Xsession

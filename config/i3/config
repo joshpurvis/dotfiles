@@ -224,11 +224,10 @@ for_window [title="Chromium$"] client.focused_inactive #000000 #000000 #000000 #
 
 
 bar {
-   output "DP-1"
+   output "DP-5"
    height 25
    position top
    tray_output "DP-1" 
-   status_command ~/.env/i3/bin/python3 ~/.i3/status.py
    colors {
      separator #928374
      background #282828
@@ -241,8 +240,9 @@ bar {
    font pango: Inconsulata Bold 8
 }
 bar {
-   output "DP-5"
+   output "DP-1"
    tray_output "DP-1"
+   status_command ~/.env/i3/bin/python3 ~/.i3/status.py
    height 25
    position top
    colors {
