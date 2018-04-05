@@ -33,4 +33,4 @@ link ~/src/dotfiles/config/gitconfig ~/.gitconfig
 link ~/src/dotfiles/fonts ~/.fonts
 link ~/.Xresources ~/.Xdefaults
 link ~/src/dotfiles/config/mopidy ~/.config/mopidy
-link ~/src/dotfiles/config/xsession ~/.xsession
+link ~/src/dotfiles/config/xsession ~/.Xsession

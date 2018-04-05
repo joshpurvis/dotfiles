@@ -223,36 +223,3 @@ for_window [title="Chromium$"] client.focused #000000 #000000 #000000 #000000
 for_window [title="Chromium$"] client.focused_inactive #000000 #000000 #000000 #000000 
 
 
-bar {
-   output "DP-1"
-   height 25
-   position top
-   tray_output "DP-1" 
-   status_command ~/.env/i3/bin/python3 ~/.i3/status.py
-   colors {
-     separator #928374
-     background #282828
-     statusline #ebdbb2
-     focused_workspace #A3BE8C #A3BE8C #282828
-     active_workspace #1d2021 #1d2021 #928374
-     inactive_workspace #32302f #32302f #928374
-     urgent_workspace #cc241d #cc241d #ebdbb2
-   }
-   font pango: Inconsulata Bold 8
-}
-bar {
-   output "DP-5"
-   tray_output "DP-1"
-   height 25
-   position top
-   colors {
-     separator #928374
-     background #282828
-     statusline #ebdbb2
-     focused_workspace #A3BE8C #A3BE8C #282828
-     active_workspace #1d2021 #1d2021 #928374
-     inactive_workspace #32302f #32302f #928374
-     urgent_workspace #cc241d #cc241d #ebdbb2
-   }
-   font pango: Inconsulata Bold 8
-} 

@@ -1,1 +1,1 @@
-export ~/.secret
+source ~/.secret

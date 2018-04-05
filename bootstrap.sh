@@ -1,6 +1,38 @@
-#!/bin/bash
+sudo pacman -S --noconfirm base-devel gnome-keyring
 
-sudo apt-get update
-sudo apt-get install -y build-essential libssl-dev libffi-dev python-dev python-pip
-sudo pip install ansible --upgrade
-ansible-playbook -i "localhost," -c local ansible/main.yml
+yaourt -S --no-confirm aurman
+
+aurman -S --noconfirm i3-gaps git chromium zsh python-pip scrot i3lock compton nitrogen gsimplecal
+aurman -S --noconfirm hicolor-icon-theme network-manager network-manager-applet xorg-xrandr feh fzf coreutils 
+aurman -S --noconfirm lxappearance lxsession vimb docker urxvt urxvt-perls libmicrohttpd rofi rofi-scripts 
+aurman -S --noconfirm freerdp net-tools nodejs numlockx perl-image-exiftool mlocate rclone aurman 
+aurman -S --noconfirm ranger-git w3m dmenu2 rxvt-unicode nvm pulseaudio cava pavucontrol gnu-netcat mopidy mopidy-spotify ncmpcpp xclip
+aurman -S --noconfirm tmux systemd-numlockontty
+
+sudo systemctl enable docker.service
+sudo systemctl enable numLockOnTty.service
+
+
+# install video drivers using manjaro's detector
+# sudo mhwd -i pci video-nvidia
+
+# updates cache for locate tool (happens on cron eventually)
+sudo ionice -c3 updatedb
+
+# setup pip, virtualenv, and i3-related python dependencies
+sudo pip install pip -U
+sudo pip install virtualenv virtualenvwrapper
+source /usr/bin/virtualenvwrapper.sh
+mkvirtualenv i3
+~/.env/i3/bin/pip install requests i3pystatus psutil
+deactivate
+
+# zsh configuration
+if [ $SHELL ne '/bin/zsh' ]
+then
+    chsh -s /bin/zsh  # and logout
+fi
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+
+# if gnome, fix numlock state after logging in:
+gsettings set org.gnome.settings-daemon.peripherals.keyboard remember-numlock-state true
