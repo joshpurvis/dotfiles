@@ -4,6 +4,8 @@ set nocompatible
 filetype off
 set updatetime=250
 setlocal spell spelllang=en_us
+" speed up ESC key when switching modes:
+set timeoutlen=1000 ttimeoutlen=0
 
 
 " Vundle bundles
@@ -113,10 +115,10 @@ set t_Co=256
 "set background=dark  
 
 colorscheme nord 
-"hi Normal ctermbg=NONE " transparency with uxrvt + vim
+hi Normal ctermbg=NONE " transparency with uxrvt + vim
 "Invisible character colors
-"highlight NonText guifg=#4a4a59
-"highlight SpecialKey guifg=#4a4a59
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
 
 " hack for when vim is in tmux and 256 color
 if &term =~ '256color'
@@ -185,7 +187,7 @@ map <F6> :setlocal spell! spelllang=en_us<CR>
 
 " fix ugly spellcheck
 " highlight SpellBad cterm=underline ctermfg=255 ctermbg=166 guifg=#eeeeee guibg=#d75f00
-highlight SpellBad cterm=underline ctermfg=166 ctermbg=NONE guibg=NONE
+highlight SpellBad cterm=underline ctermfg=167 ctermbg=NONE guibg=NONE
 
 " let g:SuperTabClosePreviewOnPopupClose = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -202,3 +204,5 @@ highlight GitGutterChange ctermfg=yellow
 highlight GitGutterDelete ctermfg=red
 highlight GitGutterChangeDelete ctermfg=yellow
 
+" fix the theme insert/normal colors for jellybeans
+let g:lightline = { 'colorscheme': 'seoul256' }
