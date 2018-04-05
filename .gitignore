@@ -3,7 +3,9 @@ init
 .idea
 .vagrant
 .netrwhist
-vim/config/bundle/*
+config/vim/bundle/*
+config/ranger/history
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
