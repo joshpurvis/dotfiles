@@ -11,6 +11,7 @@ aurman -S --noconfirm tmux systemd-numlockontty
 
 sudo systemctl enable docker.service
 sudo systemctl enable numLockOnTty.service
+sudo usermod -aG docker $USER 
 
 
 # install video drivers using manjaro's detector
