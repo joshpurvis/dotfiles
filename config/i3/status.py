@@ -2,11 +2,13 @@ from i3pystatus import Status
 from nicehash import NiceHash
 from monero import Monero
 import os
+import socket
 
 status = Status()
 
 status.register("clock", format="%Y-%m-%d %H:%M")
-if os.environ.get('HOST') == 'josh-laptop':
+
+if socket.gethostname() == 'josh-laptop': 
     status.register(
         "battery",
         interval=30,
