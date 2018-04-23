@@ -3,18 +3,26 @@
 *utf8:                  1
 *saveLines:             999999
 *scrollBar:             false
-*faceSize:              10
+*faceSize:              12 
 *faceName:              Inconsolata
 *bellIsUrgent:          true
 
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.autohint:   true 
+
+URxvt.font: xft:Inconsolata:size=11:antialias=true
+URxvt.boldFont: xft:Inconsolata:bold:size=11:antialias=true
 URxvt.perl-ext-common: default,matcher,clipboard,selection-to-clipboard
 URxvt.url-launcher: chromium 
-URxvt.underlineURLs:  True
+URxvt.underlineURLs:  true
 URxvt.url-select.underline: true
 URxvt.matcher.button: 1 
 urxvt.transparent: true 
 urxvt.shading: 5 
 urxvt*depth: 16 
+urxvt*internalBorder: 1
+urxvt*ResizeHintOverride: true
 
 URxvt.iso14755: false
 URxvt.iso14755_52: false
@@ -27,10 +35,6 @@ URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.C-C: perl:clipboard:copy
 URxvt.keysym.C-V: perl:clipboard:paste
 URxvt.keysym.Control-v: perl:clipboard:paste_escaped
-
-!fonts
-URxvt.font: xft:Inconsolata:size=12:antialias=true
-URxvt.boldFont: xft:Inconsolata:bold:size=12:antialias=true
 
 !scroll
 URxvt*scrollTtyOutput:      false
