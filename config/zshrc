@@ -70,7 +70,9 @@ export GOPATH=$HOME/go
 
 export PATH=$PATH:$HOME/bin
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # fix vim inside tmux
 alias tmux="TERM=screen-256color-bce tmux"
@@ -82,3 +84,6 @@ source /usr/share/nvm/init-nvm.sh
 
 # prevent stupid single quotes everywhere with ls
 export QUOTING_STYLE=literal
+
+PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+export GEM_HOME=$HOME/.gem
