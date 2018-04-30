@@ -53,3 +53,4 @@ alias v="vim"
 
 alias u="sudo pacman -Syu"
 
+alias ls='ls --color=auto --hide="*.pyc" --hide="__pycache__" --group-directories-first'
