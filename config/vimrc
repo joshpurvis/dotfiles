@@ -1,52 +1,48 @@
 " .vimrc
-set mouse=a
 set nocompatible
 filetype off
-set updatetime=250
 setlocal spell spelllang=en_us
-" speed up ESC key when switching modes:
-set timeoutlen=1000 ttimeoutlen=0
-
 
 " Vundle bundles
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.fzf
 
-
 call vundle#begin()
-
     Plugin 'VundleVim/Vundle.vim'
+    Plugin 'arcticicestudio/nord-vim'
     Plugin 'tpope/vim-fugitive'
-    Plugin 'sheerun/vim-polyglot'
     Plugin 'jiangmiao/auto-pairs'
     Plugin 'junegunn/fzf.vim' 
-    Plugin 'edkolev/tmuxline.vim'
-    Plugin 'hashivim/vim-hashicorp-tools'
-    Plugin 'tpope/vim-sensible'
-    Plugin 'itchyny/lightline.vim'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'w0rp/ale'
-    Plugin 'davidhalter/jedi-vim'
-    Plugin 'flazz/vim-colorschemes'
-    Plugin 'arcticicestudio/nord-vim'
-    "Plugin 'Valloric/YouCompleteMe'
-
-    "Bundle 'Lokaltog/vim-easymotion'
     Plugin 'ervandew/supertab'
+    Plugin 'itchyny/lightline.vim'
+    Plugin 'davidhalter/jedi-vim'
+    Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'airblade/vim-gitgutter'
+    
+    "Plugin 'tpope/vim-sensible'
+    "Plugin 'w0rp/ale'
+    "Plugin 'edkolev/tmuxline.vim'
+    "Plugin 'flazz/vim-colorschemes'
+    "Plugin 'hashivim/vim-hashicorp-tools'
+    "Plugin 'sheerun/vim-polyglot'
     "Plugin 'vim-airline/vim-airline'
     "Plugin 'morhetz/gruvbox'
     "Bundle 'git://git.wincent.com/command-t.git'
     "Bundle 'nvie/vim-flake8'
-    "Bundle 'ervandew/supertab'
     "Bundle 'terryma/vim-multiple-cursors'
     "Bundle 'klen/python-mode'
     "Bundle 'scrooloose/nerdtree'
     "Plugin 'fatih/vim-go'
+    "
 call vundle#end()
 
-let mapleader = ","
+" general 
 syntax on
+colorscheme nord 
 
+set mouse=a
+set updatetime=250
 set hidden               "hide buffers instead of closing
 set tabstop=4            "set default tabbing to 4 spaces
 set autoindent
@@ -63,15 +59,35 @@ set laststatus=2
 set noshowmode
 set showmatch            "show matching brackets"
 set pastetoggle=<F2>
+set t_Co=256
+set timeoutlen=1000 ttimeoutlen=0    " remove delay when switching modes
+let mapleader = " "
 
-" space key toggles folding
+" hack for when vim is in tmux and 256 color
+if &term =~ '256color'
+	set t_ut=
+endif
+
+" hybrid relative/absolute line numbers
+"set rnu
+"au BufEnter * :set rnu
+"au BufLeave * :set nu
+"au WinEnter * :set rnu
+"au WinLeave * :set nu
+"au InsertEnter * :set nu
+"au InsertLeave * :set rnu
+"au FocusLost * :set nu
+"au FocusGained * :set rnu
+
+" folds
 nnoremap <space> za
 vnoremap <space> zf
 
-"filetype plugin indent on
-
 " clear highlights on \ 
 noremap \ :noh<return><esc>
+
+" make Y yank til the eol similar to C/D
+map Y y$
 
 " write to sudo when you forget
 cmap w!! w !sudo tee % >/dev/null
@@ -93,10 +109,6 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
-
-" make Y yank til the eol similar to C/D
-map Y y$
-
 " Map <C-L> to also toggle search highlighting until the next search
 nnoremap <C-L> :nohl<CR><C-L>
 
@@ -109,21 +121,12 @@ map <C-j> <C-W>j_
 map <C-k> <C-W>k_
 map <C-l> <C-W>l_
 
+" enable transparency with uxrvt + vim
+hi Normal ctermbg=NONE 
 
-"Set vim to use 256 colorscheme in term
-set t_Co=256
-"set background=dark  
-
-colorscheme nord 
-hi Normal ctermbg=NONE " transparency with uxrvt + vim
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
-
-" hack for when vim is in tmux and 256 color
-if &term =~ '256color'
-	set t_ut=
-endif
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
@@ -132,70 +135,34 @@ function! s:build_quickfix_list(lines)
   cc
 endfunction
 
-" Enable per-command history.
-" CTRL-N and CTRL-P will be automatically bound to next-history and
-" previous-history instead of down and up. If you don't like the change,
-" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
-let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-" line numbers
-set rnu
-au BufEnter * :set rnu
-au BufLeave * :set nu
-au WinEnter * :set rnu
-au WinLeave * :set nu
-au InsertEnter * :set nu
-au InsertLeave * :set rnu
-au FocusLost * :set nu
-au FocusGained * :set rnu
-
-
-
 " fzf settings
 nmap ; :Buffers<CR>
 nmap <Leader>r :Tags<CR>
 nmap <Leader>t :Files<CR>
 nmap <Leader>a :Ag<CR>
 nmap <C-t> :Files<CR>
+nnoremap ? :GFiles<CR>
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-"let g:ale_sign_column_always = 1
-"let g:gitgutter_realtime = 1
-"let g:gitgutter_eager = 1
-
+" ale settings
+let g:ale_sign_column_always = 1
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
-"highlight link ALEWarningSign String
-" highlight link ALEErrorSign Title
-
-
-" shift+arrow selection
-nmap <S-Up> v<Up>
-nmap <S-Down> v<Down>
-nmap <S-Left> v<Left>
-nmap <S-Right> v<Right>
-vmap <S-Up> <Up>
-vmap <S-Down> <Down>
-vmap <S-Left> <Left>
-vmap <S-Right> <Right>
-imap <S-Up> <Esc>v<Up>
-imap <S-Down> <Esc>v<Down>
-imap <S-Left> <Esc>v<Left>
-imap <S-Right> <Esc>v<Right>
+let g:ale_completion_enabled = 1
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
 " F6 toggles spellcheck
 map <F6> :setlocal spell! spelllang=en_us<CR>
 
 " fix ugly spellcheck
-" highlight SpellBad cterm=underline ctermfg=255 ctermbg=166 guifg=#eeeeee guibg=#d75f00
 highlight SpellBad cterm=underline ctermfg=167 ctermbg=NONE guibg=NONE
 
-" let g:SuperTabClosePreviewOnPopupClose = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-"hi Pmenu ctermbg=color ctermfg=color
-"hi PmenuSel ctermbg=color ctermfg=color
-"
 " Fix git gutter ugly gray bar
 highlight LineNr ctermbg=None
 highlight SignColumn ctermbg=NONE
@@ -206,3 +173,31 @@ highlight GitGutterChangeDelete ctermfg=yellow
 
 " fix the theme insert/normal colors for jellybeans
 let g:lightline = { 'colorscheme': 'seoul256' }
+
+"let g:jedi#show_call_signatures = "0"
+
+
+"  sane line joins
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
+
+" handle git hunks with c-n and c-p
+nnoremap <c-N> :GitGutterNextHunk<CR>
+nnoremap <c-P> :GitGutterPrevHunk<CR>
+nnoremap <c-U> :GitGutterUndoHunk<CR>
+
+
+nmap F <Plug>(easymotion-prefix)s
+
+" bad habits
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" open previous file with backspace
+noremap <BS> <C-^>
+
+set undofile
+set undodir=~/.vimundo/
