@@ -7,7 +7,9 @@ config/vim/bundle/*
 config/ranger/history
 config/i3/config
 config/vim/swap
+config/mopidy
 config/mopidy/mopidy.conf
+fonts/.uuid
 
 
 # Byte-compiled / optimized / DLL files
