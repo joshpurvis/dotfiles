@@ -7,7 +7,9 @@ aurman -S --noconfirm hicolor-icon-theme network-manager network-manager-applet 
 aurman -S --noconfirm lxappearance lxsession vimb docker urxvt urxvt-perls libmicrohttpd rofi rofi-scripts 
 aurman -S --noconfirm freerdp net-tools nodejs numlockx perl-image-exiftool mlocate rclone aurman 
 aurman -S --noconfirm ranger-git w3m dmenu2 rxvt-unicode nvm pulseaudio cava pavucontrol gnu-netcat mopidy mopidy-spotify ncmpcpp xclip
-aurman -S --noconfirm tmux systemd-numlockontty
+aurman -S --noconfirm tmux systemd-numlockontty alsa-tools strace java-environment-common java-runtime-common
+aurman -S --noconfirm the_silver_searcher fd clang base-devel boost libevent bitcoin-qt libpqxx transmission-qt
+aurman -S --noconfirm ruby ruby-rdoc gem system-config-printer cups manjaro-printer ufw 
 
 sudo systemctl enable docker.service
 sudo systemctl enable numLockOnTty.service
