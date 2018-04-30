@@ -74,6 +74,11 @@ export PATH=$PATH:$HOME/bin
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+# ignore git in fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+
+
 # fix vim inside tmux
 alias tmux="TERM=screen-256color-bce tmux"
 
@@ -87,3 +92,5 @@ export QUOTING_STYLE=literal
 
 PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export GEM_HOME=$HOME/.gem
+
+source ~/bin/git-helpers
