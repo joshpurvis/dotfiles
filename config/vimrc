@@ -19,6 +19,7 @@ call vundle#begin()
     Plugin 'Valloric/YouCompleteMe'
     Plugin 'Lokaltog/vim-easymotion'
     Plugin 'airblade/vim-gitgutter'
+    Plugin 'https://tpope.io/vim/dadbod.git'
     
     "Plugin 'tpope/vim-sensible'
     "Plugin 'w0rp/ale'
