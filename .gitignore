@@ -4,6 +4,7 @@ init
 .vagrant
 .netrwhist
 config/vim/bundle/*
+config/vim/spell/*
 config/ranger/history
 config/i3/config
 config/vim/swap
