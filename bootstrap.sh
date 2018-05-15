@@ -10,7 +10,9 @@ aurman -S --noconfirm ranger-git w3m dmenu2 rxvt-unicode nvm pulseaudio cava pav
 aurman -S --noconfirm tmux systemd-numlockontty alsa-tools strace java-environment-common java-runtime-common
 aurman -S --noconfirm the_silver_searcher fd clang base-devel boost libevent bitcoin-qt libpqxx transmission-qt
 aurman -S --noconfirm ruby ruby-rdoc gem system-config-printer cups manjaro-printer ufw 
-aurman -S --noconfirm docker-compose docker-machine
+aurman -S --noconfirm docker-compose docker-machine bind-tools net-tools nim nimble lib32-fontconfig
+
+
 
 sudo systemctl enable docker.service
 sudo systemctl enable numLockOnTty.service
