@@ -4,6 +4,7 @@ filetype off
 setlocal spell spelllang=en_us
 set foldlevelstart=99
 set winwidth=110
+set autoread
 
 " Vundle bundles
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -13,6 +14,7 @@ call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'arcticicestudio/nord-vim'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-surround'
     Plugin 'jiangmiao/auto-pairs'
     Plugin 'junegunn/fzf.vim' 
     Plugin 'ervandew/supertab'
@@ -22,10 +24,15 @@ call vundle#begin()
     Plugin 'Lokaltog/vim-easymotion'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'https://tpope.io/vim/dadbod.git'
+    Plugin 'haya14busa/incsearch.vim'
     Plugin 'zah/nim.vim'
-    
-    "Plugin 'tpope/vim-sensible'
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
+    Plugin 'pangloss/vim-javascript'
+    Plugin 'mxw/vim-jsx'
+    Plugin 'tpope/vim-sensible'
     "Plugin 'w0rp/ale'
+    "Plugin 'vim-syntastic/syntastic'
     "Plugin 'edkolev/tmuxline.vim'
     "Plugin 'flazz/vim-colorschemes'
     "Plugin 'hashivim/vim-hashicorp-tools'
@@ -35,7 +42,7 @@ call vundle#begin()
     "Bundle 'git://git.wincent.com/command-t.git'
     "Bundle 'nvie/vim-flake8'
     "Bundle 'terryma/vim-multiple-cursors'
-    "Bundle 'klen/python-mode'
+    "Plugin 'klen/python-mode'
     "Bundle 'scrooloose/nerdtree'
     "Plugin 'fatih/vim-go'
     "
@@ -48,12 +55,12 @@ colorscheme nord
 set mouse=a
 set updatetime=250
 set hidden               "hide buffers instead of closing
-set tabstop=4            "set default tabbing to 4 spaces
-set autoindent
-set expandtab
-set shiftwidth=4         "spaces to use for autoindenting
-set shiftround           "multiple shiftwidth with carrots
-set smarttab
+"set tabstop=4            "set default tabbing to 4 spaces
+"set autoindent
+"set expandtab
+"set shiftwidth=4         "spaces to use for autoindenting
+"set shiftround           "multiple shiftwidth with carrots
+"set smarttab
 set nonumber 
 set wildmenu
 set showcmd
@@ -135,6 +142,10 @@ map <C-h> <C-W>h_
 map <C-j> <C-W>j_
 map <C-k> <C-W>k_
 map <C-l> <C-W>l_
+
+" Easy buffer switching
+nnoremap <silent> H :bp<CR>
+nnoremap <silent> L :bn<CR>
 
 " enable transparency with uxrvt + vim
 hi Normal ctermbg=NONE 
@@ -219,3 +230,30 @@ set undodir=~/.vimundo/
 
 " python 
 autocmd FileType python set foldmethod=indent
+
+" incsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+" javascript / jsx
+let g:jsx_ext_required = 0
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2
+let g:syntastic_javascript_eslint_args = ['--fix']
+au VimEnter *.js au BufWritePost *.js checktime
+let g:syntastic_javascript_checkers = ['eslint']
+
+" autofix with eslint
+function! SyntasticCheckHook(errors)
+  checktime
+endfunction
+
+" Ultrsnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

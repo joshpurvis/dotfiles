@@ -19,7 +19,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/python 
     zgen oh-my-zsh plugins/npm
     zgen oh-my-zsh plugins/docker
-
+    zgen load edouard-lopez/yeoman-zsh-plugin
     zgen load tonyseek/oh-my-zsh-virtualenv-prompt
     zgen load ~/.zsh/themes/purvis
 
@@ -94,3 +94,5 @@ PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export GEM_HOME=$HOME/.gem
 
 source ~/bin/git-helpers
+
+export PATH=$PATH:$HOME/anaconda3/bin
