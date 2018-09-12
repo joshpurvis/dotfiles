@@ -1,18 +1,13 @@
-sudo pacman -S --noconfirm base-devel gnome-keyring
+sudo pacman -Syu --noconfirm base-devel gnome-keyring
 
+# install aurman
 yaourt -S --no-confirm aurman
 
-aurman -S --noconfirm i3-gaps git chromium zsh python-pip scrot i3lock compton nitrogen gsimplecal
-aurman -S --noconfirm hicolor-icon-theme network-manager network-manager-applet xorg-xrandr feh fzf coreutils 
-aurman -S --noconfirm lxappearance lxsession vimb docker urxvt urxvt-perls libmicrohttpd rofi rofi-scripts 
-aurman -S --noconfirm freerdp net-tools nodejs numlockx perl-image-exiftool mlocate rclone aurman 
-aurman -S --noconfirm ranger-git w3m dmenu2 rxvt-unicode nvm pulseaudio cava pavucontrol gnu-netcat mopidy mopidy-spotify ncmpcpp xclip
-aurman -S --noconfirm tmux systemd-numlockontty alsa-tools strace java-environment-common java-runtime-common
-aurman -S --noconfirm the_silver_searcher fd clang base-devel boost libevent bitcoin-qt libpqxx transmission-qt
-aurman -S --noconfirm ruby ruby-rdoc gem system-config-printer cups manjaro-printer ufw 
-aurman -S --noconfirm docker-compose docker-machine bind-tools net-tools nim nimble lib32-fontconfig
+# restore pacman state from list file
+sudo pacman -Sy - < pacman.list 
 
-
+# restore AUR state from list file
+aurman -Sy -< aur.list
 
 sudo systemctl enable docker.service
 sudo systemctl enable numLockOnTty.service
