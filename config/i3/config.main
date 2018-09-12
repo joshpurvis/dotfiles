@@ -17,7 +17,7 @@ bar {
 bar {
    output "DP-1"
    tray_output "DP-1"
-   status_command ~/.env/i3/bin/python3 ~/.i3/status.py
+   status_command ~/.env/i3updated/bin/python3 ~/.i3/status.py
    height 25
    position top
    colors {

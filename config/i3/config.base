@@ -1,6 +1,6 @@
 set $mod Mod1
 set $rangerandterminal urxvt -e bash -i -c "ranger && zsh" 
-set $terminal urxvtc
+set $terminal kitty 
 
 # set default font
 font pango: Inconsulata 8 
