@@ -1,18 +1,21 @@
 !settings
 
+#define FONT Inconsolata
+#define FONT_SIZE 11
+
 *utf8:                  1
 *saveLines:             999999
 *scrollBar:             false
-*faceSize:              12 
-*faceName:              Inconsolata
+*faceSize:              FONT_SIZE 
+*faceName:              FONT
 *bellIsUrgent:          true
 
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 Xft.autohint:   true 
 
-URxvt.font: xft:Inconsolata:size=11:antialias=true
-URxvt.boldFont: xft:Inconsolata:bold:size=11:antialias=true
+URxvt.font: xft:FONT:size=FONT_SIZE
+URxvt.boldFont: xft:FONT:bold:size=FONT_SIZE
 URxvt.perl-ext-common: default,matcher,clipboard,selection-to-clipboard
 URxvt.url-launcher: chromium 
 URxvt.underlineURLs:  true
