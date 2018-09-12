@@ -1,0 +1,78 @@
+snippet atlas "Terraform Atlas block" b
+atlas {
+	name = "${1:name}"
+}
+endsnippet
+
+snippet module "Terraform module" b
+module "${1:name}" {
+	source = "${2}"
+	${3}
+}
+endsnippet
+
+snippet moduleG "Terraform module (github public source)" b
+module "${1:name}" {
+	source = "github.com/${2:owner}/${3:repo}?${4:ref=}"
+	${5}
+}
+endsnippet
+
+snippet moduleP "Terraform module (path source)" b
+module "${1:name}" {
+	source = "${2:./modules/}"
+	${3}
+}
+endsnippet
+
+snippet moduleGS "Terraform module (github ssh/private source)" b
+module "${1:name}" {
+	source = "git::ssh://git@github.com/${2:owner}/${3:repo}.git${4:?ref=}"
+	${5}
+}
+endsnippet
+
+snippet provider "Terraform provider" b
+provider "${1:name}" {
+	${2}
+}
+endsnippet
+
+snippet provisioner "Terraform provisioner" b
+provisioner "${1:name}" {
+	${2}
+}
+endsnippet
+
+snippet resource "Terraform resource block" b
+resource "${1:type}" "${2:name}" {
+	${3}
+}
+endsnippet
+
+snippet variableE "Terraform variable (empty)" b
+variable "${1:name}" {
+	type = "string"
+	${2:description = "${3:describe your variable}"}
+}
+endsnippet
+
+snippet variableM "Terraform variable (map)" b
+variable "${1:name}" {
+	type = "map"
+	${2:description = "${3:describe your variable}"}
+	default = {
+		${4:key1} = "${5:val1}"
+		${6:key2} = "${7:val2}"
+	}
+}
+endsnippet
+
+snippet variableS "Terraform variable (string)" b
+variable "${1:name}" {
+	type = "string"
+	${2:description = "${3:describe your variable}"}
+	default = "${4:default_value}"
+}
+endsnippet
+
