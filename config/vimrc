@@ -31,6 +31,7 @@ call vundle#begin()
     Plugin 'pangloss/vim-javascript'
     Plugin 'mxw/vim-jsx'
     Plugin 'tpope/vim-sensible'
+    Plugin 'aperezdc/vim-template'
     "Plugin 'w0rp/ale'
     "Plugin 'vim-syntastic/syntastic'
     "Plugin 'edkolev/tmuxline.vim'
@@ -38,7 +39,7 @@ call vundle#begin()
     "Plugin 'hashivim/vim-hashicorp-tools'
     "Plugin 'sheerun/vim-polyglot'
     "Plugin 'vim-airline/vim-airline'
-    "Plugin 'morhetz/gruvbox'
+    "  Plugin 'morhetz/gruvbox'
     "Bundle 'git://git.wincent.com/command-t.git'
     "Bundle 'nvie/vim-flake8'
     "Bundle 'terryma/vim-multiple-cursors'
@@ -51,7 +52,6 @@ call vundle#end()
 " general 
 syntax on
 colorscheme nord 
-
 set mouse=a
 set updatetime=250
 set hidden               "hide buffers instead of closing
@@ -69,7 +69,7 @@ set laststatus=2
 set noshowmode
 set showmatch            "show matching brackets"
 set pastetoggle=<F2>
-set t_Co=256
+"set t_Co=256
 set timeoutlen=1000 ttimeoutlen=0    " remove delay when switching modes
 let mapleader = " "
 
@@ -80,9 +80,9 @@ set ignorecase
 set smartcase
 
 " hack for when vim is in tmux and 256 color
-if &term =~ '256color'
-	set t_ut=
-endif
+"if &term =~ '256color'
+"	set t_ut=
+"endif
 
 " hybrid relative/absolute line numbers
 "set rnu
@@ -153,6 +153,10 @@ hi Normal ctermbg=NONE
 "Invisible character colors
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+highlight Visual ctermbg=138
+highlight Visual ctermfg=255
+
+
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
@@ -209,9 +213,9 @@ if v:version > 703 || v:version == 703 && has('patch541')
 endif
 
 " handle git hunks with c-n and c-p
-nnoremap <c-N> :GitGutterNextHunk<CR>
-nnoremap <c-P> :GitGutterPrevHunk<CR>
-nnoremap <c-U> :GitGutterUndoHunk<CR>
+" nnoremap <c-N> :GitGutterNextHunk<CR>
+" nnoremap <c-P> :GitGutterPrevHunk<CR>
+"nnoremap <c-U> :GitGutterUndoHunk<CR>
 
 
 nmap F <Plug>(easymotion-prefix)s
@@ -254,6 +258,39 @@ function! SyntasticCheckHook(errors)
 endfunction
 
 " Ultrsnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ["<C-n>", "<Down>"]
+let g:ycm_key_list_previous_completion = ["<C-p>", "<Up>"]
+let g:SuperTabDefaultCompletionType = "<C-n>"
+
+" better key bindings for UltiSnipsExpandTrigger
+"let g:UltiSnipsExpandTrigger = "<tab>" 
+let g:UltiSnipsListSnippets="<c-e>"
+let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+
+" allow tab completion to work with snippets
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+" neovim specific settings
+if has("nvim")
+   set inccommand=nosplit 
+endif
