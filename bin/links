@@ -9,6 +9,17 @@ function link() {
         ln -s $from $to
     fi
 }
+function slink() {
+    from=$1
+    to=$2
+
+    if [ -e $to ]
+    then
+        echo "$to already exists, skipping"
+    else
+        sudo ln -s $from $to
+    fi
+}
 
 mkdir -p ~/.config
 
@@ -32,3 +43,6 @@ link ~/src/dotfiles/config/urxvt ~/.urxvt
 link ~/src/dotfiles/config/gitconfig ~/.gitconfig
 link ~/src/dotfiles/fonts ~/.fonts
 link ~/src/dotfiles/config/mopidy ~/.config/mopidy
+
+
+slink ~/src/dotfiles/hooks/ /etc/pacman.d/hooks
