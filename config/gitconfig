@@ -3,6 +3,7 @@
     email = joshua.purvis@gmail.com
 [core]
     editor = vim
+	excludesfile = /home/josh/.gitignore
 [diff]
 [color]
     ui = auto

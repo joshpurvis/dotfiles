@@ -43,6 +43,7 @@ link ~/src/dotfiles/config/urxvt ~/.urxvt
 link ~/src/dotfiles/config/gitconfig ~/.gitconfig
 link ~/src/dotfiles/fonts ~/.fonts
 link ~/src/dotfiles/config/mopidy ~/.config/mopidy
+link ~/src/dotfiles/config/gitignore ~/.gitignore
 
 
 slink ~/src/dotfiles/hooks/ /etc/pacman.d/hooks
