@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+#Example, if you wanted to fork hashicorp/terraform, to github.com/joshpurvis/terraform.git
+
+# ./bin/gofork hashicorp terraform joshpurvis
+USER=$1
+REPO=$2
+FORK_USER=${3:-joshpurvis}
+USER_REPO="$USER/$REPO"
+
+if [ -e $GOPATH/src/github.com/$USER_REPO ]; then
+	echo "$USER_REPO was already forked, remove local fork and try again"
+else
+	go get "github.com/$USER_REPO"
+	cd $GOPATH/src/github.com/$USER_REPO
+	git remote rename origin upstream
+	git remote add origin "git@github.com:$FORK_USER/$REPO.git"
+fi
+
+
