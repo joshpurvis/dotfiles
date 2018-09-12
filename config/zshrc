@@ -95,4 +95,4 @@ export GEM_HOME=$HOME/.gem
 
 source ~/bin/git-helpers
 
-export PATH=$PATH:$HOME/anaconda3/bin
+export GOCACHE=off
