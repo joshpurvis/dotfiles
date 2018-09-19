@@ -82,6 +82,12 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 # fix vim inside tmux
 alias tmux="TERM=screen-256color-bce tmux"
 
+# enable control-s and control-q support
+stty start undef
+stty stop undef
+setopt noflowcontrol
+
+
 export TERM=rxvt-unicode-256color
 
 # enable nvm
