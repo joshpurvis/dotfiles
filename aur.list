@@ -7,6 +7,7 @@ brscan4
 cava
 clion
 dashcore
+discord
 dmenu2
 doctl-bin
 duc
@@ -20,6 +21,8 @@ jre8
 js
 libavutil-52
 libb2
+libc++
+libc++abi
 libicns
 libsecp256k1-git
 libspotify
