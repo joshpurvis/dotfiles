@@ -17,8 +17,11 @@ ffmpeg-compat-54
 goland
 google-chrome
 google-cloud-sdk
+icu59
+icu61
 jre8
 js
+lcms
 libavutil-52
 libb2
 libc++

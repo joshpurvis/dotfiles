@@ -6,7 +6,7 @@ alsa-tools
 alsa-utils
 alsaplayer
 anki
-apache-ant
+ant
 arc-maia-icon-theme
 atom
 autoconf
@@ -29,6 +29,7 @@ bzip2
 ccid
 clang
 cmake
+code
 compton
 coreutils
 cpupower
@@ -48,6 +49,7 @@ docker
 docker-compose
 docker-machine
 dosfstools
+downgrade
 e2fsprogs
 ecryptfs-utils
 efibootmgr
@@ -79,6 +81,7 @@ gdb
 gdm
 gedit
 gettext
+gimp
 git
 glibc
 gnome-backgrounds
@@ -128,6 +131,7 @@ gthumb
 gtk3
 gtksourceview-pkgbuild
 gufw
+gulp
 gvfs
 gvfs-afc
 gvfs-google
@@ -136,12 +140,14 @@ gvfs-smb
 gzip
 haveged
 hexchat
+hidapi
 htop
 hugo
 i3-gaps
 i3lock
 imagewriter
 inetutils
+inkscape
 intel-ucode
 inxi
 iproute2
@@ -221,6 +227,7 @@ mkinitcpio-openswap
 mlocate
 mobile-broadband-provider-info
 modemmanager
+mono
 mopidy
 mousetweaks
 ms-office-online
@@ -268,6 +275,7 @@ perl
 perl-image-exiftool
 perl-rename
 phonon-qt5
+php
 polkit-gnome
 powertop
 procps-ng
@@ -278,6 +286,7 @@ pulseaudio-ctl
 pulseaudio-zeroconf
 pwgen
 python-pip
+qalculate-gtk
 qutebrowser
 rclone
 reiserfsprogs
