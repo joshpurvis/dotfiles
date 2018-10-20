@@ -66,7 +66,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:/home/josh/go/bin
 export PATH=$PATH:/home/josh/.cargo/bin
 export PATH=$PATH:/home/josh/.local/bin
-export GOPATH=$HOME/go
+export GOPATH=$HOME/projects
 
 export PATH=$PATH:$HOME/bin
 
@@ -83,10 +83,10 @@ export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 alias tmux="TERM=screen-256color-bce tmux"
 
 # fixes for incremental search within tmux
-bindkey -e
-bindkey '^R' history-incremental-search-backward
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+#bindkey -e
+#jbindkey '^R' history-incremental-search-backward
+#bindkey '^[[A' up-line-or-search
+#bindkey '^[[B' down-line-or-search
 
 # enable control-s and control-q support
 stty start undef

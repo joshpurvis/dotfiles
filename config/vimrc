@@ -19,8 +19,8 @@ call vundle#begin()
     Plugin 'junegunn/fzf.vim' 
     Plugin 'ervandew/supertab'
     Plugin 'itchyny/lightline.vim'
-    Plugin 'davidhalter/jedi-vim'
-    Plugin 'Valloric/YouCompleteMe'
+    "Plugin 'davidhalter/jedi-vim'
+    "Plugin 'Valloric/YouCompleteMe'
     Plugin 'Lokaltog/vim-easymotion'
     Plugin 'airblade/vim-gitgutter'
     Plugin 'https://tpope.io/vim/dadbod.git'
@@ -52,7 +52,7 @@ call vundle#end()
 " general 
 syntax on
 colorscheme nord 
-set mouse=a
+"set mouse=v
 set updatetime=250
 set hidden               "hide buffers instead of closing
 "set tabstop=4            "set default tabbing to 4 spaces
@@ -260,9 +260,9 @@ endfunction
 " Ultrsnips
 
 " make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ["<C-n>", "<Down>"]
-let g:ycm_key_list_previous_completion = ["<C-p>", "<Up>"]
-let g:SuperTabDefaultCompletionType = "<C-n>"
+"let g:ycm_key_list_select_completion = ["<C-n>", "<Down>"]
+"let g:ycm_key_list_previous_completion = ["<C-p>", "<Up>"]
+"let g:SuperTabDefaultCompletionType = "<C-n>"
 
 " better key bindings for UltiSnipsExpandTrigger
 "let g:UltiSnipsExpandTrigger = "<tab>" 
@@ -294,3 +294,7 @@ endfunction
 if has("nvim")
    set inccommand=nosplit 
 endif
+
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
