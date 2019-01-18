@@ -54,3 +54,5 @@ alias v="vim"
 alias u="sudo pacman -Syu"
 
 alias ls='ls -hlt --color=auto --hide="*.pyc" --hide="__pycache__" --group-directories-first'
+
+alias largefiles='du -Sh | sort -rh | head -50'
