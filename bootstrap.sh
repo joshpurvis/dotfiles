@@ -1,3 +1,5 @@
+# !/bin/bash
+
 sudo pacman -Syu --noconfirm base-devel gnome-keyring
 
 # install aurman
