@@ -39,3 +39,6 @@ git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 
 # if gnome, fix numlock state after logging in:
 gsettings set org.gnome.settings-daemon.peripherals.keyboard remember-numlock-state true
+
+# install wine components
+winetricks corefonts vcrun2005 vcrun2008 vcrun2015

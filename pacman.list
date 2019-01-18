@@ -6,6 +6,8 @@ alsa-tools
 alsa-utils
 alsaplayer
 anki
+ansible
+ansible-lint
 ant
 arc-maia-icon-theme
 atom
@@ -24,9 +26,11 @@ bison
 bitcoin-qt
 blueman
 brasero
+brave
 btrfs-progs
 bzip2
 ccid
+chromium
 clang
 cmake
 code
@@ -50,6 +54,7 @@ docker-compose
 docker-machine
 dosfstools
 downgrade
+doxygen
 e2fsprogs
 ecryptfs-utils
 efibootmgr
@@ -77,6 +82,7 @@ fzf
 gawk
 gcc
 gcc-libs
+gconf-editor
 gdb
 gdm
 gedit
@@ -118,6 +124,7 @@ gnu-netcat
 go
 gparted
 graphicsmagick
+graphviz
 grep
 grilo-plugins
 grub
@@ -168,10 +175,12 @@ lib32-libva-vdpau-driver
 lib32-mesa-demos
 lib32-mesa-vdpau
 lib32-nvidia-utils
+lib32-vulkan-icd-loader
 lib32-vulkan-intel
 lib32-vulkan-radeon
 libcurl-gnutls
 libdvdcss
+libicns
 libmicrohttpd
 libpqxx
 libreoffice-fresh
@@ -196,6 +205,7 @@ make
 man-db
 man-pages
 manjaro-alsa
+manjaro-architect-dev
 manjaro-artwork
 manjaro-aur-support
 manjaro-browser-settings
@@ -227,8 +237,9 @@ mkinitcpio-openswap
 mlocate
 mobile-broadband-provider-info
 modemmanager
+mongodb
+mongodb-tools
 mono
-mopidy
 mousetweaks
 ms-office-online
 mupdf-gl
@@ -240,6 +251,7 @@ nautilus-admin
 nautilus-empty-file
 ncmpcpp
 nemo
+neofetch
 net-tools
 netctl
 network-manager-applet
@@ -266,6 +278,7 @@ p7zip
 packer
 pacman
 pamac
+papirus-icon-theme
 patch
 pavucontrol
 pciutils
@@ -277,6 +290,7 @@ perl-rename
 phonon-qt5
 php
 polkit-gnome
+polybar
 powertop
 procps-ng
 psmisc
@@ -298,23 +312,26 @@ ruby
 ruby-rdoc
 rxvt-unicode
 s-nail
+samba
 screenfetch
 sdl2_image
 sdl2_ttf
 sdl_image
 sdl_ttf
-seahorse
 sed
 shadow
 simple-scan
+snapd-git
 spectre-meltdown-checker
 steam-manjaro
+steam-native
 strace
 sudo
 sushi
 sysfsutils
 systemd-sysvcompat
 tar
+tcpdump
 teeworlds
 telepathy-accounts-signon
 terminus-font
@@ -329,6 +346,7 @@ totem
 traceroute
 tracker
 transmission-gtk
+trayer
 ttf-bitstream-vera
 ttf-dejavu
 ttf-droid
@@ -343,6 +361,7 @@ urxvt-perls
 usb_modeswitch
 usbutils
 util-linux
+utox
 vi
 vim
 vino
@@ -353,6 +372,8 @@ w3m
 weechat
 wget
 which
+wine-staging
+winetricks
 wpa_supplicant
 xclip
 xdg-su
@@ -377,6 +398,10 @@ xorg-xinit
 xorg-xrandr
 xwinfo
 yaourt
+yay
 yelp
+zathura
+zathura-djvu
+zathura-pdf-mupdf
 zenity
 zsh
