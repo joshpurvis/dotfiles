@@ -55,6 +55,7 @@ docker-machine
 dosfstools
 downgrade
 doxygen
+dunst
 e2fsprogs
 ecryptfs-utils
 efibootmgr
@@ -237,8 +238,6 @@ mkinitcpio-openswap
 mlocate
 mobile-broadband-provider-info
 modemmanager
-mongodb
-mongodb-tools
 mono
 mousetweaks
 ms-office-online
@@ -300,6 +299,7 @@ pulseaudio-ctl
 pulseaudio-zeroconf
 pwgen
 python-pip
+python-pysnmp
 qalculate-gtk
 qutebrowser
 rclone
@@ -321,7 +321,6 @@ sdl_ttf
 sed
 shadow
 simple-scan
-snapd-git
 spectre-meltdown-checker
 steam-manjaro
 steam-native

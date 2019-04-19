@@ -3,13 +3,14 @@
 sudo pacman -Syu --noconfirm base-devel gnome-keyring
 
 # install aurman
-yaourt -S --no-confirm aurman
+yaourt -S --no-confirm yay 
 
 # restore pacman state from list file
 sudo pacman -Sy - < pacman.list 
 
+
 # restore AUR state from list file
-aurman -Sy -< aur.list
+yay -Sy -< aur.list
 
 sudo systemctl enable docker.service
 sudo systemctl enable numLockOnTty.service
